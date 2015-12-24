@@ -406,7 +406,7 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(ingotRuthenium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetRuthenium});
 		GameRegistry.addRecipe(new ItemStack(forgeHammer, 64), new Object[]{"MM ","MRR","MM ",('M'), ingotTin,('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(rodCadmium, 8), new Object[]{"P","P",('P'), plateCadmium});
-		GameRegistry.addRecipe(new ItemStack(Items.torch, 3), new Object[]{"F","R",('F'), Items.flint,('R'),rodWooden});
+		GameRegistry.addRecipe(new ItemStack(Blocks.torch, 3), new Object[]{"F","R",('F'), Items.flint,('R'),rodWooden});
 		
 		GameRegistry.addRecipe(new ItemStack(pickUltimate, 1), new Object[]{"P",('P'),pickUltimate});
 		GameRegistry.addRecipe(new ItemStack(broadswordUltimate, 1), new Object[]{"P",('P'),broadswordUltimate});
