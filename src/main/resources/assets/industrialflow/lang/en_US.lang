@@ -1,0 +1,128 @@
+itemGroup.IndustrialFlow=IndustrialFlow Mod
+
+tile.industrialflow:oreCopper.name=Copper Ore
+tile.industrialflow:oreTin.name=Tin Ore
+tile.industrialflow:oreIron.name=Iron Ore
+tile.industrialflow:oreZinc.name=Zinc Ore
+tile.industrialflow:oreLead.name=Lead Ore
+tile.industrialflow:oreUranium.name=Uranium Ore
+tile.industrialflow:oreRuthenium.name=Ruthenium Ore
+tile.industrialflow:oreTitanium.name=Titanium Ore
+tile.industrialflow:oreGallium.name=Gallium Ore
+tile.industrialflow:oreGermanium.name=Germanium Ore
+tile.industrialflow:oreCobalt.name=Cobalt Ore
+tile.industrialflow:oreNickel.name=Nickel Ore
+tile.industrialflow:oreCadmium.name=Cadmium Ore
+tile.industrialflow:oreTopaz.name=Topaz Ore
+tile.industrialflow:oreDiamond.name=Diamond Ore
+tile.industrialflow:oreGold.name=Gold Ore
+tile.industrialflow:oreSilver.name=Silver Ore
+tile.industrialflow:orePlatinum.name=Platinum Ore
+tile.industrialflow:oreTungsten.name=Tungsten Ore
+tile.industrialflow:oreThorium.name=Thorium Ore
+tile.industrialflow:oreRadium.name=Radium Ore
+tile.industrialflow:orePalladium.name=Palladium Ore
+tile.industrialflow:oreRenium.name=Renium Ore
+tile.industrialflow:oreFlint.name=Flint Ore
+
+item.industrialflow:gemTopaz.name=Topaz Gem
+item.industrialflow:gemDiamond.name=Diamond Gem
+item.industrialflow:gemFlint.name=Flint Gem
+item.industrialflow:dustGallium.name=Gallium Dust
+item.industrialflow:dustGermanium.name=Germanium Dust
+
+item.industrialflow:rodFire.name=Fire Rod
+item.industrialflow:rodFlint.name=Flint Rod
+item.industrialflow:rodWooden.name=Wooden Rod
+item.industrialflow:rodCadmium.name=Cadmium Rod
+
+item.industrialflow:nuggetFlint.name=Flint Nugget
+item.industrialflow:nuggetPalladium.name=Palladium Nugget
+item.industrialflow:nuggetRuthenium.name=Ruthenium Nugget
+
+item.industrialflow:pickFlint.name=Flint pickaxe
+item.industrialflow:pickCopper.name=Copper pickaxe
+item.industrialflow:pickCobalt.name=Cobalt pickaxe
+item.industrialflow:pickBronze.name=Bronze pickaxe
+item.industrialflow:pickIron.name=Iron pickaxe
+item.industrialflow:pickNickel.name=Nickel pickaxe
+item.industrialflow:pickTitanium.name=Titanium pickaxe
+item.industrialflow:pickWSteel.name=Tungstate pickaxe
+item.industrialflow:pickDiamond.name=Diamond pickaxe
+item.industrialflow:pickTopaz.name=Topaz pickaxe
+
+item.industrialflow:broadswordFlint.name=Flint broadsword
+item.industrialflow:broadswordCopper.name=Copper broadsword
+item.industrialflow:broadswordCobalt.name=Cobalt broadsword
+item.industrialflow:broadswordBronze.name=Bronze broadsword
+item.industrialflow:broadswordIron.name=Iron broadsword
+item.industrialflow:broadswordNickel.name=Nickel broadsword
+item.industrialflow:broadswordTitanium.name=Titanium broadsword
+item.industrialflow:broadswordWSteel.name=Tungstate broadsword
+item.industrialflow:broadswordDiamond.name=Diamond broadsword
+item.industrialflow:broadswordTopaz.name=Topaz broadsword
+
+item.industrialflow:axeFlint.name=Flint axe
+item.industrialflow:axeCopper.name=Copper axe
+item.industrialflow:axeCobalt.name=Cobalt axe
+item.industrialflow:axeBronze.name=Bronze axe
+item.industrialflow:axeIron.name=Iron axe
+item.industrialflow:axeNickel.name=Nickel axe
+item.industrialflow:axeTitanium.name=Titanium axe
+item.industrialflow:axeWSteel.name=Tungstate axe
+item.industrialflow:axeDiamond.name=Diamond axe
+item.industrialflow:axeTopaz.name=Topaz axe
+
+item.industrialflow:hoeFlint.name=Flint hoe
+item.industrialflow:hoeCopper.name=Copper hoe
+item.industrialflow:hoeCobalt.name=Cobalt hoe
+item.industrialflow:hoeBronze.name=Bronze hoe
+item.industrialflow:hoeIron.name=Iron hoe
+item.industrialflow:hoeNickel.name=Nickel hoe
+item.industrialflow:hoeTitanium.name=Titanium hoe
+item.industrialflow:hoeWSteel.name=Tungstate hoe
+item.industrialflow:hoeDiamond.name=Diamond hoe
+item.industrialflow:hoeTopaz.name=Topaz hoe
+
+item.industrialflow:spadeFlint.name=Flint spade
+item.industrialflow:spadeCopper.name=Copper spade
+item.industrialflow:spadeCobalt.name=Cobalt spade
+item.industrialflow:spadeBronze.name=Bronze spade
+item.industrialflow:spadeIron.name=Iron spade
+item.industrialflow:spadeNickel.name=Nickel spade
+item.industrialflow:spadeTitanium.name=Titanium spade
+item.industrialflow:spadeWSteel.name=Tungstate spade
+item.industrialflow:spadeDiamond.name=Diamond spade
+item.industrialflow:spadeTopaz.name=Topaz spade
+
+item.industrialflow:forgeHammer.name=Forge Hammer
+item.industrialflow:plateCadmium.name=Cadmium Plate
+item.industrialflow:plateTungsten.name=Tungsten Plate
+
+item.industrialflow:pickUltimate.name=Ultimate pickaxe
+item.industrialflow:axeUltimate.name=Ultimate axe
+item.industrialflow:spadeUltimate.name=Ultimate spade
+item.industrialflow:broadswordUltimate.name=Ultimate broadsword
+item.industrialflow:hoeUltimate.name=Ultimate hoe
+
+item.industrialflow:ingotZinc.name=Zinc Ingot
+item.industrialflow:ingotCopper.name=Copper Ingot
+item.industrialflow:ingotTin.name=Tin Ingot
+item.industrialflow:ingotIron.name=Iron Ingot
+item.industrialflow:ingotLead.name=Lead Ingot
+item.industrialflow:ingotCobalt.name=Cobalt Ingot
+item.industrialflow:ingotNickel.name=Nickel Ingot
+item.industrialflow:ingotCadmium.name=Cadmium Ingot
+item.industrialflow:ingotSilver.name=Silver Ingot
+item.industrialflow:ingotGold.name=Gold Ingot
+item.industrialflow:ingotPlatinum.name=Platinum Ingot
+item.industrialflow:ingotBronze.name=Bronze Ingot
+item.industrialflow:ingotWSteel.name=Tungstate Ingot
+item.industrialflow:ingotTungsten.name=Tungsten Ingot
+item.industrialflow:ingotUranium.name=Uranium Ingot
+item.industrialflow:ingotTitanium.name=Titanium Ingot
+item.industrialflow:ingotPalladium.name=Palladium Ingot
+item.industrialflow:ingotRenium.name=Renium Ingot
+item.industrialflow:ingotRuthenium.name=Ruthenium Ingot
+item.industrialflow:ingotRadium.name=Radium Ingot
+item.industrialflow:ingotThorium.name=Thorium Ingot
