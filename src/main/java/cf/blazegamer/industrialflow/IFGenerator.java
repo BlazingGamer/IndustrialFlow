@@ -10,21 +10,21 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class IFGenerator implements IWorldGenerator {
-	public static Block block;
-	public static boolean nether;
-	public static boolean end;
-	public static boolean overworld;
-	public static int minY;
-	public static int maxY;
-	public static int blocksPerVein;
-	public static int veinsPerChunk;
+	public Block block;
+	public boolean nether;
+	public boolean end;
+	public boolean overworld;
+	public int minY;
+	public int maxY;
+	public int blocksPerVein;
+	public int veinsPerChunk;
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		switch(world.provider.dimensionId) {
-			case -1: if (this.nether == true) generateNether(world, random, chunkX * 16, chunkZ * 16);
-			case 0: if (this.overworld == true) generateOverworld(world, random, chunkX * 16, chunkZ * 16);
-			case 1: if (this.end == true) generateEnd(world, random, chunkX * 16, chunkZ * 16);
+			case -1: if (this.nether == true) generateNether(world, random, chunkX * 16, chunkZ * 16);break;
+			case 0: if (this.overworld == true) generateOverworld(world, random, chunkX * 16, chunkZ * 16);break;
+			case 1: if (this.end == true) generateEnd(world, random, chunkX * 16, chunkZ * 16);break;
 			//case 61: generateUtopia(world, random, chunkX * 16, chunkZ * 16);
 			//case 62: generateDanger(world, random, chunkX * 16, chunkZ * 16);
 			//case 63: generateVillageDim(world, random, chunkX * 16, chunkZ * 16);
@@ -32,6 +32,16 @@ public class IFGenerator implements IWorldGenerator {
 		}
 	}
 	
+	/**
+	 * @param block - ÃÅÍÅÐÈÐÓÞÙÈÉÑß ÁËÎÊ
+	 * @param inNether - ÍÀËÈ×ÈÅ ÃÅÍÅÐÀÖÈÈ Â ÀÄÓ
+	 * @param inWorld - ÍÀËÈ×ÈÅ ÃÅÍÅÐÀÖÈÈ Â ÂÅÐÕÍÅÌ ÌÈÐÅ
+	 * @param inEnd - ÍÀËÈ×ÈÅ ÃÅÍÅÐÀÖÈÈ Â ÊÐÀÞ
+	 * @param heightMin - ÌÈÍÈÌÀËÜÍÀß ÂÛÑÎÒÀ
+	 * @param heightMax - ÌÀÊÑÈÌÀËÜÍÀß ÂÛÑÎÒÀ
+	 * @param BlocksPerVein - ÊÎË-ÂÎ ÁËÎÊÎÂ Â ÆÈËÅ
+	 * @param VeinsPerChunk - ÊÎË-ÂÎ ÆÈË Â ×ÀÍÊÅ
+	 */
 	public IFGenerator(Block block, boolean inNether, boolean inWorld, boolean inEnd, int heightMin, int heightMax, int BlocksPerVein, int VeinsPerChunk) {
 		this.block = block;
 		this.nether = inNether;
@@ -62,14 +72,14 @@ public class IFGenerator implements IWorldGenerator {
 	}
 	
 	private void generateOverworld(World world, Random random, int X, int Z) {
-		assert maxY > minY : "Max Y is lower than Min Y!";
-        assert minY > 0 : "Too low Min Y!";
-        assert maxY < 256 && maxY > 0 : "Incorrect Max Y!";
+		assert maxY < minY : "Ìàêñèìàëüíàÿ Y äîëæíà áûòü áîëüøå ìèíèìàëüíîé";
+        assert minY < 0 : "Ìèíèìàëüíàÿ Y äîëæíà áûòü áîëüøå 0";
+        assert maxY > 256 && maxY < 0 : "Ìàêñèìàëüíàÿ Y äîëæíà áûòü ìåíüøå 256 è áîëüøå 0";
         for (int i = 0; i < this.veinsPerChunk; i++) {
         	int x = X + random.nextInt(16);
-			int Y = this.minY + random.nextInt(this.maxY - this.minY);
+			int y = this.minY + random.nextInt(this.maxY - this.minY);
         	int z = Z + random.nextInt(16);
-			(new WorldGenMinable(this.block, this.blocksPerVein, Blocks.stone)).generate(world, random, X, Y, Z);
+			(new WorldGenMinable(this.block, this.blocksPerVein, Blocks.stone)).generate(world, random, x, y, z);
         }
 	}
 }

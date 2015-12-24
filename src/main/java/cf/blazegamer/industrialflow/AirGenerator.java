@@ -21,7 +21,7 @@ public class AirGenerator implements IWorldGenerator {
 			int X = chunkX * 16 + random.nextInt(16);
 			int Y = this.minY + random.nextInt(this.maxY - this.minY);
 			int Z = chunkZ * 16 + random.nextInt(16);
-			(new WorldGenMinable(this.block, 1, this.blocksPerVein, Blocks.air)).generate(world, random, X, Y, Z);
+			(new WorldGenMinable(this.block, 1, this.blocksPerVein, Blocks.gravel)).generate(world, random, X, Y, Z);
 		}
 	}
 	/**

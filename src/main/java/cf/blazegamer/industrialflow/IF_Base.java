@@ -2,6 +2,7 @@ package cf.blazegamer.industrialflow;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -27,13 +28,13 @@ import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable;
 public class IF_Base {
 	public static Block oreCopper, oreTin, oreLead, oreIron, oreZinc, oreCobalt, oreNickel, oreTopaz, oreDiamond, oreCadmium;
 	public static Block oreSilver, oreGold, orePlatinum, oreGermanium, oreGallium, oreTungsten, oreUranium, oreTitanium;
-	public static Block oreRenium, orePalladium, oreRuthenium, oreRadium, oreThorium, oreFlint;
+	public static Block oreRenium, orePalladium, oreRuthenium, oreRadium, oreThorium;
 	
-	public static Item gemTopaz, gemDiamond, gemFlint, dustGallium, dustGermanium, ingotZinc, ingotCopper, ingotTin;
+	public static Item gemTopaz, gemDiamond, dustGallium, dustGermanium, ingotZinc, ingotCopper, ingotTin;
 	public static Item ingotIron, ingotLead, ingotSilver, ingotGold, ingotCobalt, ingotNickel, ingotCadmium;
 	public static Item ingotPlatinum, ingotUranium, ingotTungsten, ingotTitanium, ingotPalladium, ingotRenium;
 	public static Item ingotRuthenium, ingotRadium, ingotThorium, ingotBronze, ingotWSteel, rodFire, rodFlint;
-	public static Item rodWooden, rodCadmium, nuggetFlint, nuggetPalladium, nuggetRuthenium, forgeHammer;
+	public static Item rodWooden, rodCadmium, nuggetPalladium, nuggetRuthenium, forgeHammer;
 	public static Item plateCadmium, plateTungsten;
 	
 	public static ItemAxe axeFlint, axeCopper, axeBronze, axeIron, axeCobalt, axeNickel;
@@ -47,6 +48,7 @@ public class IF_Base {
 	public static ItemSpade spadeTopaz, spadeDiamond, spadeWSteel, spadeTitanium, spadeUltimate;
 	public static ItemHoe hoeFlint, hoeCopper, hoeBronze, hoeIron, hoeCobalt, hoeNickel;
 	public static ItemHoe hoeTopaz, hoeDiamond, hoeWSteel, hoeTitanium, hoeUltimate;
+	public static IFBattleAxe battleaxeCopper;
 
 	public static final ToolMaterial FlintToolmat = EnumHelper.addToolMaterial("FLINT", 1, 125, 4F, 1.5F, 7);
 	public static final ToolMaterial CopperToolmat = EnumHelper.addToolMaterial("COPPER", 1, 190, 5F, 1.5F, 12);
@@ -66,7 +68,6 @@ public class IF_Base {
 	public static IFGenerator titaniumGen, radiumGen, thoriumGen, cobaltGen, nickelGen;
 	public static IFGenerator tungstenGen, topazGen, galliumGen, germaniumGen, platinumGen;
 	public static IFGenerator silverGen, palladiumGen, rutheniumGen, cadmiumGen, reniumGen;
-	public static AirGenerator flintGen;
 	@EventHandler
 	public void preLoad(FMLPreInitializationEvent event)
 	{
@@ -76,45 +77,33 @@ public class IF_Base {
 		ingotTin = new IFItem("industrialflow:ingotTin", this.tabIF);
 		ingotIron = new IFItem("industrialflow:ingotIron", this.tabIF);
 		ingotLead = new IFItem("industrialflow:ingotLead", this.tabIF);
-		
 		ingotSilver = new IFItem("industrialflow:ingotSilver", this.tabIF);
 		ingotGold = new IFItem("industrialflow:ingotGold", this.tabIF);
 		ingotCobalt = new IFItem("industrialflow:ingotCobalt", this.tabIF);
 		ingotNickel = new IFItem("industrialflow:ingotNickel", this.tabIF);
 		ingotCadmium = new IFItem("industrialflow:ingotCadmium", this.tabIF);
-		
 		ingotUranium = new IFItem("industrialflow:ingotUranium", this.tabIF);
 		ingotTungsten = new IFItem("industrialflow:ingotTungsten", this.tabIF);
-
 		ingotPlatinum = new IFItem("industrialflow:ingotPlatinum", this.tabIF);
 		ingotTitanium = new IFItem("industrialflow:ingotTitanium", this.tabIF);
-		
 		ingotPalladium = new IFItem("industrialflow:ingotPalladium", this.tabIF);
 		ingotRenium = new IFItem("industrialflow:ingotRenium", this.tabIF);
 		ingotRuthenium = new IFItem("industrialflow:ingotRuthenium", this.tabIF);
 		ingotRadium = new IFItem("industrialflow:ingotRadium", this.tabIF);
 		ingotThorium = new IFItem("industrialflow:ingotThorium", this.tabIF);
-		
 		ingotBronze = new IFItem("industrialflow:ingotBronze", this.tabIF);
 		ingotWSteel = new IFItem("industrialflow:ingotWSteel", this.tabIF);
-		
 		gemTopaz = new IFItem("industrialflow:gemTopaz", this.tabIF);
 		gemDiamond = new IFItem("industrialflow:gemDiamond", this.tabIF);
-		gemFlint = new IFItem("industrialflow:gemFlint", this.tabIF);
 		dustGallium = new IFItem("industrialflow:dustGallium", this.tabIF);
 		dustGermanium = new IFItem("industrialflow:dustGermanium", this.tabIF);
-		
 		rodFire = new IFItem("industrialflow:rodFire", this.tabIF);
 		rodFlint = new IFItem("industrialflow:rodFlint", this.tabIF);
 		rodWooden = new IFItem("industrialflow:rodWooden", this.tabIF);
 		rodCadmium = new IFItem("industrialflow:rodCadmium", this.tabIF);
-		
-		nuggetFlint = new IFItem("industrialflow:nuggetFlint", this.tabIF);
 		nuggetPalladium = new IFItem("industrialflow:nuggetPalladium", this.tabIF);
 		nuggetRuthenium = new IFItem("industrialflow:nuggetRuthenium", this.tabIF);
-		
 		forgeHammer = new IFItem("industrialflow:forgeHammer", this.tabIF);
-		
 		plateCadmium = new IFItem("industrialflow:plateCadmium", this.tabIF);
 		plateTungsten = new IFItem("industrialflow:plateTungsten", this.tabIF);
 		
@@ -189,7 +178,6 @@ public class IF_Base {
 		hoeUltimate = new IFUltimateHoe();
 
 		// Ores
-		oreFlint = new IFOre("industrialflow:oreFlint", tabIF, 5.6F, "", 0, this.nuggetFlint, Material.ground);
 		
 		oreZinc = new IFOre("industrialflow:oreZinc", tabIF, 1.3F, "pickaxe", 1);
 		oreCopper = new IFOre("industrialflow:oreCopper", tabIF, 2.2F, "pickaxe", 1);
@@ -219,7 +207,6 @@ public class IF_Base {
 		oreRadium = new IFOre("industrialflow:oreRadium", tabIF, 22F, "pickaxe", 5);
 		oreThorium = new IFOre("industrialflow:oreThorium", tabIF, 24F, "pickaxe", 5);
 		
-		GameRegistry.registerBlock(oreFlint, "industrialflowOreFlint");
 		GameRegistry.registerBlock(oreCopper, "industrialflowOreCopper");
 		GameRegistry.registerBlock(oreTin, "industrialflowOreTin");
 		GameRegistry.registerBlock(oreIron, "industrialflowOreIron");
@@ -247,17 +234,12 @@ public class IF_Base {
 		GameRegistry.registerItem(dustGallium, "industrialflowDustGallium");
 		GameRegistry.registerItem(dustGermanium, "industrialflowDustGermanium");
 		GameRegistry.registerItem(gemTopaz, "industrialflowGemTopaz");
-		GameRegistry.registerItem(gemFlint, "industrialflowGemFlint");
-		
 		GameRegistry.registerItem(rodFire, "industrialflowRodFire");
 		GameRegistry.registerItem(rodFlint, "industrialflowRodFlint");
 		GameRegistry.registerItem(rodWooden, "industrialflowRodWooden");
 		GameRegistry.registerItem(rodCadmium, "industrialflowRodCadmium");
-		
-		GameRegistry.registerItem(nuggetFlint, "industrialflowNuggetFlint");
 		GameRegistry.registerItem(nuggetPalladium, "industrialflowNuggetPalladium");
 		GameRegistry.registerItem(nuggetRuthenium, "industrialflowNuggetRuthenium");
-		
 		GameRegistry.registerItem(ingotZinc, "industrialflowIngotZinc");
 		GameRegistry.registerItem(ingotCopper, "industrialflowIngotCopper");
 		GameRegistry.registerItem(ingotTin, "industrialflowIngotTin");
@@ -278,9 +260,7 @@ public class IF_Base {
 		GameRegistry.registerItem(ingotRadium, "industrialflowIngotRadium");
 		GameRegistry.registerItem(ingotThorium, "industrialflowIngotThorium");
 		GameRegistry.registerItem(ingotRuthenium, "industrialflowIngotRuthenium");
-		
 		GameRegistry.registerItem(forgeHammer, "industrialflowForgeHammer");
-		
 		GameRegistry.registerItem(plateCadmium, "industrialflowPlateCadmium");
 		GameRegistry.registerItem(plateTungsten, "industrialflowPlateTungsten");
 		
@@ -345,7 +325,6 @@ public class IF_Base {
 		GameRegistry.registerItem(spadeUltimate, "industrialFlowSpadeUltimate");
 		GameRegistry.registerItem(hoeUltimate, "industrialFlowHoeUltimate");
 		
-		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","MR"," R",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(axeCopper, 1), new Object[]{"MM","MR"," R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeBronze, 1), new Object[]{"MM","MR"," R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeIron, 1), new Object[]{"MM","MR"," R",('M'), ingotIron, ('R'), rodWooden});
@@ -356,7 +335,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(axeWSteel, 1), new Object[]{"MM","MR"," R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeTitanium, 1), new Object[]{"MM","MR"," R",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","RM","R ",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(axeCopper, 1), new Object[]{"MM","RM","R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeBronze, 1), new Object[]{"MM","RM","R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeIron, 1), new Object[]{"MM","RM","R ",('M'), ingotIron, ('R'), rodWooden});
@@ -367,7 +345,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(axeWSteel, 1), new Object[]{"MM","RM","R ",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeTitanium, 1), new Object[]{"MM","RM","R ",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(pickFlint, 1), new Object[]{"MMM"," R "," R ",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(pickCopper, 1), new Object[]{"MMM"," R "," R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickBronze, 1), new Object[]{"MMM"," R "," R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickIron, 1), new Object[]{"MMM"," R "," R ",('M'), ingotIron, ('R'), rodWooden});
@@ -378,7 +355,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(pickWSteel, 1), new Object[]{"MMM"," R "," R ",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickTitanium, 1), new Object[]{"MMM"," R "," R ",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(broadswordFlint, 1), new Object[]{"M","M","R",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(broadswordCopper, 1), new Object[]{"M","M","R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordBronze, 1), new Object[]{"M","M","R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordIron, 1), new Object[]{"M","M","R",('M'), ingotIron, ('R'), rodWooden});
@@ -389,7 +365,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(broadswordWSteel, 1), new Object[]{"M","M","R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordTitanium, 1), new Object[]{"M","M","R",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(spadeFlint, 1), new Object[]{"M","R","R",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(spadeCopper, 1), new Object[]{"M","R","R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeBronze, 1), new Object[]{"M","R","R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeIron, 1), new Object[]{"M","R","R",('M'), ingotIron, ('R'), rodWooden});
@@ -400,7 +375,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(spadeWSteel, 1), new Object[]{"M","R","R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeTitanium, 1), new Object[]{"M","R","R",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM"," R"," R",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(hoeCopper, 1), new Object[]{"MM"," R"," R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeBronze, 1), new Object[]{"MM"," R"," R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeIron, 1), new Object[]{"MM"," R"," R",('M'), ingotIron, ('R'), rodWooden});
@@ -411,7 +385,6 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(hoeWSteel, 1), new Object[]{"MM"," R"," R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeTitanium, 1), new Object[]{"MM"," R"," R",('M'), ingotTitanium, ('R'), rodWooden});
 		
-		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM","R ","R ",('M'), gemFlint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(hoeCopper, 1), new Object[]{"MM","R ","R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeBronze, 1), new Object[]{"MM","R ","R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeIron, 1), new Object[]{"MM","R ","R ",('M'), ingotIron, ('R'), rodWooden});
@@ -423,14 +396,21 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(hoeTitanium, 1), new Object[]{"MM","R ","R ",('M'), ingotTitanium, ('R'), rodWooden});
 		
 		GameRegistry.addRecipe(new ItemStack(pickUltimate, 1), new Object[]{"PRP"," R "," C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
-		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"PP","RR"," C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
-		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"PP","RR","C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
+		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"RP","RP"," C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
+		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"PR","PR","C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(broadswordUltimate, 1), new Object[]{" P"," R", "TC",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium,('T'),plateTungsten});
 		GameRegistry.addRecipe(new ItemStack(spadeUltimate, 1), new Object[]{"R","P","C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"PR","C ","C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"PR"," C"," C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		
-		GameRegistry.addRecipe(new ItemStack(gemFlint, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetFlint});
+		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","MR"," R",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","RM","R ",('M'), Items.flint, ('R'), rodFlint});		
+		GameRegistry.addRecipe(new ItemStack(pickFlint, 1), new Object[]{"MMM"," R "," R ",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(broadswordFlint, 1), new Object[]{"M","M","R",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(spadeFlint, 1), new Object[]{"M","R","R",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM"," R"," R",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM","R ","R ",('M'), Items.flint, ('R'), rodFlint});
+		
 		GameRegistry.addRecipe(new ItemStack(ingotPalladium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetPalladium});
 		GameRegistry.addRecipe(new ItemStack(ingotRuthenium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetRuthenium});
 		GameRegistry.addRecipe(new ItemStack(forgeHammer, 64), new Object[]{"MM ","MRR","MM ",('M'), ingotTin,('R'), rodWooden});
@@ -459,15 +439,14 @@ public class IF_Base {
 		GameRegistry.addShapelessRecipe(new ItemStack(rodWooden, 12), new Object[] {Blocks.planks});
 		GameRegistry.addShapelessRecipe(new ItemStack(rodWooden, 6), new Object[] {Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(rodFire, 6), new Object[] {Items.stick, Items.stick, Items.stick, Items.blaze_powder});
-		GameRegistry.addShapelessRecipe(new ItemStack(rodFlint, 12), new Object[] {Blocks.planks, gemFlint});
-		GameRegistry.addShapelessRecipe(new ItemStack(nuggetFlint, 9), new Object[] {gemFlint});
+		GameRegistry.addShapelessRecipe(new ItemStack(rodFlint, 12), new Object[] {Blocks.planks, Items.flint});
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetPalladium, 9), new Object[] {ingotPalladium});
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetRuthenium, 9), new Object[] {ingotRuthenium});
 		GameRegistry.addShapelessRecipe(new ItemStack(plateCadmium, 2), new Object[] {forgeHammer, ingotCadmium});
 		GameRegistry.addShapelessRecipe(new ItemStack(plateTungsten, 2), new Object[] {forgeHammer, ingotTungsten});
 		
 		cadmiumGen = new IFGenerator(oreCadmium, true, false, false, 1, 64, 6, 6);
-		reniumGen = new IFGenerator(oreRenium, true, false, false, 1, 36, 4, 3);
+		reniumGen = new IFGenerator(oreRenium, true, false, false, 1, 48, 4, 3);
 		thoriumGen = new IFGenerator(oreThorium, false, false, true, 1, 52, 4, 4);
 		radiumGen = new IFGenerator(oreRadium, false, false, true, 1, 70, 4, 5);
 		
@@ -479,37 +458,40 @@ public class IF_Base {
 		topazGen = new IFGenerator(oreTopaz, false, true, false, 1, 40, 7, 4);
 		nickelGen = new IFGenerator(oreNickel, false, true, false, 1, 45, 9, 3);
 		galliumGen = new IFGenerator(oreGallium, false, true, false, 1, 40, 9, 4);
-		germaniumGen = new IFGenerator(oreGermanium, false, true, false, 1, 40, 9, 4);
+		germaniumGen = new IFGenerator(oreGermanium, false, true, false, 1, 40, 9, 7);
 		rutheniumGen = new IFGenerator(oreRuthenium, false, true, false, 1, 20, 4, 2);
 		palladiumGen = new IFGenerator(orePalladium, false, true, false, 1, 20, 4, 2);
-		uraniumGen = new IFGenerator(oreUranium, false, true, false, 1, 40, 2, 22);
+		uraniumGen = new IFGenerator(oreUranium, false, true, false, 1, 40, 6, 8);
 		titaniumGen = new IFGenerator(oreTitanium, false, true, false, 1, 30, 3, 8);
-		platinumGen = new IFGenerator(orePlatinum, false, true, false, 1, 40, 3, 3);
+		platinumGen = new IFGenerator(orePlatinum, false, true, false, 1, 40, 3, 5);
 		silverGen = new IFGenerator(oreSilver, false, true, false, 1, 55, 5, 5);
 		tungstenGen = new IFGenerator(oreTungsten, false, true, false, 1, 35, 5, 4);
-		
-		flintGen = new AirGenerator(oreTungsten, 9, 9, 200, 1);
-		
-		GameRegistry.registerWorldGenerator(flintGen, 0);
-		GameRegistry.registerWorldGenerator(reniumGen, 1);
-		GameRegistry.registerWorldGenerator(thoriumGen, 2);
-		GameRegistry.registerWorldGenerator(radiumGen, 3);
-		GameRegistry.registerWorldGenerator(copperGen, 4);
-		GameRegistry.registerWorldGenerator(tinGen, 5);
-		GameRegistry.registerWorldGenerator(cadmiumGen, 6);
-		GameRegistry.registerWorldGenerator(leadGen, 7);
-		GameRegistry.registerWorldGenerator(tungstenGen, 8);
-		GameRegistry.registerWorldGenerator(rutheniumGen, 9);
-		GameRegistry.registerWorldGenerator(palladiumGen, 10);
-		GameRegistry.registerWorldGenerator(silverGen, 11);
-		GameRegistry.registerWorldGenerator(zincGen, 12);
-		GameRegistry.registerWorldGenerator(galliumGen, 13);
-		GameRegistry.registerWorldGenerator(uraniumGen, 14);
-		GameRegistry.registerWorldGenerator(germaniumGen, 15);
-		GameRegistry.registerWorldGenerator(cobaltGen, 16);
-		GameRegistry.registerWorldGenerator(nickelGen, 17);
-		GameRegistry.registerWorldGenerator(topazGen, 18);
-		GameRegistry.registerWorldGenerator(platinumGen, 19);
-		GameRegistry.registerWorldGenerator(titaniumGen, 20);
+
+		GameRegistry.registerWorldGenerator(tungstenGen, 0);
+		GameRegistry.registerWorldGenerator(reniumGen, 0);
+		GameRegistry.registerWorldGenerator(thoriumGen, 0);
+		GameRegistry.registerWorldGenerator(radiumGen, 0);
+		GameRegistry.registerWorldGenerator(copperGen, 0);
+		GameRegistry.registerWorldGenerator(tinGen, 0);
+		GameRegistry.registerWorldGenerator(cadmiumGen, 0);
+		GameRegistry.registerWorldGenerator(leadGen, 0);
+		GameRegistry.registerWorldGenerator(titaniumGen, 0);
+		GameRegistry.registerWorldGenerator(rutheniumGen, 0);
+		GameRegistry.registerWorldGenerator(palladiumGen, 0);
+		GameRegistry.registerWorldGenerator(silverGen, 0);
+		GameRegistry.registerWorldGenerator(zincGen, 0);
+		GameRegistry.registerWorldGenerator(galliumGen, 0);
+		GameRegistry.registerWorldGenerator(uraniumGen, 0);
+		GameRegistry.registerWorldGenerator(germaniumGen, 0);
+		GameRegistry.registerWorldGenerator(cobaltGen, 0);
+		GameRegistry.registerWorldGenerator(nickelGen, 0);
+		GameRegistry.registerWorldGenerator(topazGen, 0);
+		GameRegistry.registerWorldGenerator(platinumGen, 0);
 	}
+	
+	@Mod.Instance("industrialflow")
+	public static IF_Base instance;
+	
+	@SidedProxy(clientSide = "cf.blazegamer.industrialflow.ClientProxy", serverSide = "cf.blazegamer.industrialflow.ServerProxy")
+	public static ServerProxy proxy;
 }
