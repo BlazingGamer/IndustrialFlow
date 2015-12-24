@@ -1,0 +1,16 @@
+[
+{
+  "modid": "industrialflow",
+  "name": "IndustrialFlow",
+  "description": "This mod will become global...",
+  "version": "0.1-Build4",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["BlazeGameR"],
+  "credits": "Forge Developers for making Forge and helping me with some questions. Minecraft Wiki for making wiki :)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
