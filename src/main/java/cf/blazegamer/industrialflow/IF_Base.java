@@ -456,6 +456,7 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"P",('P'),hoeUltimate});
 		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"P",('P'),axeUltimate});
 		GameRegistry.addRecipe(new ItemStack(spadeUltimate, 1), new Object[]{"P",('P'),spadeUltimate});
+		GameRegistry.addRecipe(new ItemStack(battleaxeUltimate, 1), new Object[]{"P",('P'),battleaxeUltimate});
 		
 		GameRegistry.addSmelting(oreZinc, new ItemStack(ingotZinc), 0.15F);
 		GameRegistry.addSmelting(oreCopper, new ItemStack(ingotCopper), 0.3F);
