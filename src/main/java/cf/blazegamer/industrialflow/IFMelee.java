@@ -101,7 +101,7 @@ public class IFMelee extends IFWeapon {
 		modifMap.put(new RangedAttribute("industrialflow:attackSpeed", 0D, -Double.MAX_VALUE, Double.MAX_VALUE).getAttributeUnlocalizedName(), new AttributeModifier(weapon.getUUID(), "Weapon attack speed modifier", -specs.delay, 0));
 		if (this instanceof IExtendedReachItem) {
 			try {
-				modifMap.put(new RangedAttribute("weaponmod.reach", 0D, 0D, Double.MAX_VALUE).getAttributeUnlocalizedName(), new AttributeModifier(weapon.getUUID(), "Weapon reach modifier", ((IExtendedReachItem) this).getExtendedReach(null, null, null) - 3F, 0));
+				modifMap.put(new RangedAttribute("industrialflow:reach", 0D, 0D, Double.MAX_VALUE).getAttributeUnlocalizedName(), new AttributeModifier(weapon.getUUID(), "Weapon reach modifier", ((IExtendedReachItem) this).getExtendedReach(null, null, null) - 3F, 0));
 			} catch(NullPointerException e) {}
 		}
 	}

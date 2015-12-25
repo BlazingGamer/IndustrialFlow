@@ -48,7 +48,9 @@ public class IF_Base {
 	public static ItemSpade spadeTopaz, spadeDiamond, spadeWSteel, spadeTitanium, spadeUltimate;
 	public static ItemHoe hoeFlint, hoeCopper, hoeBronze, hoeIron, hoeCobalt, hoeNickel;
 	public static ItemHoe hoeTopaz, hoeDiamond, hoeWSteel, hoeTitanium, hoeUltimate;
-	public static IFBattleAxe battleaxeCopper;
+	public static ItemMelee battleaxeFlint, battleaxeCopper, battleaxeBronze, battleaxeIron;
+	public static ItemMelee battleaxeCobalt, battleaxeNickel, battleaxeTopaz, battleaxeDiamond;
+	public static ItemMelee battleaxeWSteel, battleaxeTitanium, battleaxeUltimate;
 
 	public static final ToolMaterial FlintToolmat = EnumHelper.addToolMaterial("FLINT", 1, 125, 4F, 1.5F, 7);
 	public static final ToolMaterial CopperToolmat = EnumHelper.addToolMaterial("COPPER", 1, 190, 5F, 1.5F, 12);
@@ -120,6 +122,20 @@ public class IF_Base {
 		axeTitanium = new IFAxe("industrialflow:axeTitanium", tabIF, TitaniumToolmat);
 		
 		axeUltimate = new IFUltimateAxe();
+		
+		// Battleaxes
+		battleaxeFlint = new ItemMelee("industrialflow:battleaxeFlint", tabIF, new IFBattleAxe(FlintToolmat));
+		battleaxeCopper = new ItemMelee("industrialflow:battleaxeCopper", tabIF, new IFBattleAxe(CopperToolmat));
+		battleaxeBronze = new ItemMelee("industrialflow:battleaxeBronze", tabIF, new IFBattleAxe(BronzeToolmat));
+		battleaxeIron = new ItemMelee("industrialflow:battleaxeIron", tabIF, new IFBattleAxe(IronToolmat));
+		battleaxeCobalt = new ItemMelee("industrialflow:battleaxeCobalt", tabIF, new IFBattleAxe(CobaltToolmat));
+		battleaxeNickel = new ItemMelee("industrialflow:battleaxeNickel", tabIF, new IFBattleAxe(NickelToolmat));
+		battleaxeTopaz = new ItemMelee("industrialflow:battleaxeTopaz", tabIF, new IFBattleAxe(TopazToolmat));
+		battleaxeDiamond = new ItemMelee("industrialflow:battleaxeDiamond", tabIF, new IFBattleAxe(DiamondToolmat));
+		battleaxeWSteel = new ItemMelee("industrialflow:battleaxeWSteel", tabIF, new IFBattleAxe(WSteelToolmat));
+		battleaxeTitanium = new ItemMelee("industrialflow:battleaxeTitanium", tabIF, new IFBattleAxe(TitaniumToolmat));
+		
+		battleaxeUltimate = new IFUltimateBattleAxe();
 		
 		// Pickaxes
 		pickFlint = new IFPickaxe("industrialflow:pickFlint", tabIF, FlintToolmat);
@@ -207,124 +223,137 @@ public class IF_Base {
 		oreRadium = new IFOre("industrialflow:oreRadium", tabIF, 22F, "pickaxe", 5);
 		oreThorium = new IFOre("industrialflow:oreThorium", tabIF, 24F, "pickaxe", 5);
 		
-		GameRegistry.registerBlock(oreCopper, "industrialflowOreCopper");
-		GameRegistry.registerBlock(oreTin, "industrialflowOreTin");
-		GameRegistry.registerBlock(oreIron, "industrialflowOreIron");
-		GameRegistry.registerBlock(oreLead, "industrialflowOreLead");
-		GameRegistry.registerBlock(oreUranium, "industrialflowOreUranium");
-		GameRegistry.registerBlock(oreTitanium, "industrialflowOreTitanium");
-		GameRegistry.registerBlock(oreCobalt, "industrialflowOreCobalt");
-		GameRegistry.registerBlock(oreNickel, "industrialflowOreNickel");
-		GameRegistry.registerBlock(oreTopaz, "industrialflowOreTopaz");
-		GameRegistry.registerBlock(oreDiamond, "industrialflowOreDiamond");
-		GameRegistry.registerBlock(oreCadmium, "industrialflowOreCadmium");
-		GameRegistry.registerBlock(oreSilver, "industrialflowOreSilver");
-		GameRegistry.registerBlock(oreGold, "industrialflowOreGold");
-		GameRegistry.registerBlock(oreZinc, "industrialflowOreZinc");
-		GameRegistry.registerBlock(orePlatinum, "industrialflowOrePlatinum");
-		GameRegistry.registerBlock(oreGermanium, "industrialflowOreGermanium");
-		GameRegistry.registerBlock(oreGallium, "industrialflowOreGallium");
-		GameRegistry.registerBlock(oreTungsten, "industrialflowOreTungsten");
-		GameRegistry.registerBlock(oreRenium, "industrialflowOreRenium");
-		GameRegistry.registerBlock(orePalladium, "industrialflowOrePalladium");
-		GameRegistry.registerBlock(oreRuthenium, "industrialflowOreRuthenium");
-		GameRegistry.registerBlock(oreRadium, "industrialflowOreRadium");
-		GameRegistry.registerBlock(oreThorium, "industrialflowOreThorium");
+		GameRegistry.registerBlock(oreCopper, "OreCopper");
+		GameRegistry.registerBlock(oreTin, "OreTin");
+		GameRegistry.registerBlock(oreIron, "OreIron");
+		GameRegistry.registerBlock(oreLead, "OreLead");
+		GameRegistry.registerBlock(oreUranium, "OreUranium");
+		GameRegistry.registerBlock(oreTitanium, "OreTitanium");
+		GameRegistry.registerBlock(oreCobalt, "OreCobalt");
+		GameRegistry.registerBlock(oreNickel, "OreNickel");
+		GameRegistry.registerBlock(oreTopaz, "OreTopaz");
+		GameRegistry.registerBlock(oreDiamond, "OreDiamond");
+		GameRegistry.registerBlock(oreCadmium, "OreCadmium");
+		GameRegistry.registerBlock(oreSilver, "OreSilver");
+		GameRegistry.registerBlock(oreGold, "OreGold");
+		GameRegistry.registerBlock(oreZinc, "OreZinc");
+		GameRegistry.registerBlock(orePlatinum, "OrePlatinum");
+		GameRegistry.registerBlock(oreGermanium, "OreGermanium");
+		GameRegistry.registerBlock(oreGallium, "OreGallium");
+		GameRegistry.registerBlock(oreTungsten, "OreTungsten");
+		GameRegistry.registerBlock(oreRenium, "OreRenium");
+		GameRegistry.registerBlock(orePalladium, "OrePalladium");
+		GameRegistry.registerBlock(oreRuthenium, "OreRuthenium");
+		GameRegistry.registerBlock(oreRadium, "OreRadium");
+		GameRegistry.registerBlock(oreThorium, "OreThorium");
 		
-		GameRegistry.registerItem(dustGallium, "industrialflowDustGallium");
-		GameRegistry.registerItem(dustGermanium, "industrialflowDustGermanium");
-		GameRegistry.registerItem(gemTopaz, "industrialflowGemTopaz");
-		GameRegistry.registerItem(rodFire, "industrialflowRodFire");
-		GameRegistry.registerItem(rodFlint, "industrialflowRodFlint");
-		GameRegistry.registerItem(rodWooden, "industrialflowRodWooden");
-		GameRegistry.registerItem(rodCadmium, "industrialflowRodCadmium");
-		GameRegistry.registerItem(nuggetPalladium, "industrialflowNuggetPalladium");
-		GameRegistry.registerItem(nuggetRuthenium, "industrialflowNuggetRuthenium");
-		GameRegistry.registerItem(ingotZinc, "industrialflowIngotZinc");
-		GameRegistry.registerItem(ingotCopper, "industrialflowIngotCopper");
-		GameRegistry.registerItem(ingotTin, "industrialflowIngotTin");
-		GameRegistry.registerItem(ingotIron, "industrialflowIngotIron");
-		GameRegistry.registerItem(ingotLead, "industrialflowIngotLead");
-		GameRegistry.registerItem(ingotSilver, "industrialflowIngotSilver");
-		GameRegistry.registerItem(ingotNickel, "industrialflowIngotNickel");
-		GameRegistry.registerItem(ingotCobalt, "industrialflowIngotCobalt");
-		GameRegistry.registerItem(ingotCadmium, "industrialflowIngotCadmium");
-		GameRegistry.registerItem(ingotBronze, "industrialflowIngotBronze");
-		GameRegistry.registerItem(ingotTungsten, "industrialflowIngotTungsten");
-		GameRegistry.registerItem(ingotUranium, "industrialflowIngotUranium");
-		GameRegistry.registerItem(ingotPlatinum, "industrialflowIngotPlatinum");
-		GameRegistry.registerItem(ingotTitanium, "industrialflowIngotTitanium");
-		GameRegistry.registerItem(ingotWSteel, "industrialflowIngotWSteel");
-		GameRegistry.registerItem(ingotPalladium, "industrialflowIngotPalladium");
-		GameRegistry.registerItem(ingotRenium, "industrialflowIngotRenium");
-		GameRegistry.registerItem(ingotRadium, "industrialflowIngotRadium");
-		GameRegistry.registerItem(ingotThorium, "industrialflowIngotThorium");
-		GameRegistry.registerItem(ingotRuthenium, "industrialflowIngotRuthenium");
-		GameRegistry.registerItem(forgeHammer, "industrialflowForgeHammer");
-		GameRegistry.registerItem(plateCadmium, "industrialflowPlateCadmium");
-		GameRegistry.registerItem(plateTungsten, "industrialflowPlateTungsten");
+		GameRegistry.registerItem(dustGallium, "DustGallium");
+		GameRegistry.registerItem(dustGermanium, "DustGermanium");
+		GameRegistry.registerItem(gemTopaz, "GemTopaz");
+		GameRegistry.registerItem(rodFire, "RodFire");
+		GameRegistry.registerItem(rodFlint, "RodFlint");
+		GameRegistry.registerItem(rodWooden, "RodWooden");
+		GameRegistry.registerItem(rodCadmium, "RodCadmium");
+		GameRegistry.registerItem(nuggetPalladium, "NuggetPalladium");
+		GameRegistry.registerItem(nuggetRuthenium, "NuggetRuthenium");
+		GameRegistry.registerItem(ingotZinc, "IngotZinc");
+		GameRegistry.registerItem(ingotCopper, "IngotCopper");
+		GameRegistry.registerItem(ingotTin, "IngotTin");
+		GameRegistry.registerItem(ingotIron, "IngotIron");
+		GameRegistry.registerItem(ingotLead, "IngotLead");
+		GameRegistry.registerItem(ingotSilver, "IngotSilver");
+		GameRegistry.registerItem(ingotNickel, "IngotNickel");
+		GameRegistry.registerItem(ingotCobalt, "IngotCobalt");
+		GameRegistry.registerItem(ingotCadmium, "IngotCadmium");
+		GameRegistry.registerItem(ingotBronze, "IngotBronze");
+		GameRegistry.registerItem(ingotTungsten, "IngotTungsten");
+		GameRegistry.registerItem(ingotUranium, "IngotUranium");
+		GameRegistry.registerItem(ingotPlatinum, "IngotPlatinum");
+		GameRegistry.registerItem(ingotTitanium, "IngotTitanium");
+		GameRegistry.registerItem(ingotWSteel, "IngotWSteel");
+		GameRegistry.registerItem(ingotPalladium, "IngotPalladium");
+		GameRegistry.registerItem(ingotRenium, "IngotRenium");
+		GameRegistry.registerItem(ingotRadium, "IngotRadium");
+		GameRegistry.registerItem(ingotThorium, "IngotThorium");
+		GameRegistry.registerItem(ingotRuthenium, "IngotRuthenium");
+		GameRegistry.registerItem(forgeHammer, "ForgeHammer");
+		GameRegistry.registerItem(plateCadmium, "PlateCadmium");
+		GameRegistry.registerItem(plateTungsten, "PlateTungsten");
 		
-		GameRegistry.registerItem(axeFlint, "industrialflowAxeFlint");
-		GameRegistry.registerItem(axeCopper, "industrialflowAxeCopper");
-		GameRegistry.registerItem(axeBronze, "industrialflowAxeBronze");
-		GameRegistry.registerItem(axeIron, "industrialflowAxeIron");
-		GameRegistry.registerItem(axeCobalt, "industrialflowAxeCobalt");
-		GameRegistry.registerItem(axeNickel, "industrialflowAxeNickel");
-		GameRegistry.registerItem(axeTopaz, "industrialflowAxeTopaz");
-		GameRegistry.registerItem(axeDiamond, "industrialflowAxeDiamond");
-		GameRegistry.registerItem(axeWSteel, "industrialflowAxeWSteel");
-		GameRegistry.registerItem(axeTitanium, "industrialflowAxeTitanium");
+		GameRegistry.registerItem(axeFlint, "AxeFlint");
+		GameRegistry.registerItem(axeCopper, "AxeCopper");
+		GameRegistry.registerItem(axeBronze, "AxeBronze");
+		GameRegistry.registerItem(axeIron, "AxeIron");
+		GameRegistry.registerItem(axeCobalt, "AxeCobalt");
+		GameRegistry.registerItem(axeNickel, "AxeNickel");
+		GameRegistry.registerItem(axeTopaz, "AxeTopaz");
+		GameRegistry.registerItem(axeDiamond, "AxeDiamond");
+		GameRegistry.registerItem(axeWSteel, "AxeWSteel");
+		GameRegistry.registerItem(axeTitanium, "AxeTitanium");
 		
-		GameRegistry.registerItem(pickFlint, "industrialflowPickFlint");
-		GameRegistry.registerItem(pickCopper, "industrialflowPickCopper");
-		GameRegistry.registerItem(pickBronze, "industrialflowPickBronze");
-		GameRegistry.registerItem(pickIron, "industrialflowPickIron");
-		GameRegistry.registerItem(pickCobalt, "industrialflowPickCobalt");
-		GameRegistry.registerItem(pickNickel, "industrialflowPickNickel");
-		GameRegistry.registerItem(pickTopaz, "industrialflowPickTopaz");
-		GameRegistry.registerItem(pickDiamond, "industrialflowPickDiamond");
-		GameRegistry.registerItem(pickWSteel, "industrialflowPickWSteel");
-		GameRegistry.registerItem(pickTitanium, "industrialflowPickTitanium");
+		GameRegistry.registerItem(battleaxeFlint, "BattleaxeFlint");
+		GameRegistry.registerItem(battleaxeCopper, "BattleaxeCopper");
+		GameRegistry.registerItem(battleaxeBronze, "BattleaxeBronze");
+		GameRegistry.registerItem(battleaxeIron, "BattleaxeIron");
+		GameRegistry.registerItem(battleaxeCobalt, "BattleaxeCobalt");
+		GameRegistry.registerItem(battleaxeNickel, "BattleaxeNickel");
+		GameRegistry.registerItem(battleaxeTopaz, "BattleaxeTopaz");
+		GameRegistry.registerItem(battleaxeDiamond, "BattleaxeDiamond");
+		GameRegistry.registerItem(battleaxeWSteel, "BattleaxeWSteel");
+		GameRegistry.registerItem(battleaxeTitanium, "BattleaxeTitanium");
 		
-		GameRegistry.registerItem(broadswordFlint, "industrialflowBroadswordFlint");
-		GameRegistry.registerItem(broadswordCopper, "industrialflowBroadswordCopper");
-		GameRegistry.registerItem(broadswordBronze, "industrialflowBroadswordBronze");
-		GameRegistry.registerItem(broadswordIron, "industrialflowBroadswordIron");
-		GameRegistry.registerItem(broadswordCobalt, "industrialflowBroadswordCobalt");
-		GameRegistry.registerItem(broadswordNickel, "industrialflowBroadswordNickel");
-		GameRegistry.registerItem(broadswordTopaz, "industrialflowBroadswordTopaz");
-		GameRegistry.registerItem(broadswordDiamond, "industrialflowBroadswordDiamond");
-		GameRegistry.registerItem(broadswordWSteel, "industrialflowBroadswordWSteel");
-		GameRegistry.registerItem(broadswordTitanium, "industrialflowBroadswordTitanium");
+		GameRegistry.registerItem(pickFlint, "PickFlint");
+		GameRegistry.registerItem(pickCopper, "PickCopper");
+		GameRegistry.registerItem(pickBronze, "PickBronze");
+		GameRegistry.registerItem(pickIron, "PickIron");
+		GameRegistry.registerItem(pickCobalt, "PickCobalt");
+		GameRegistry.registerItem(pickNickel, "PickNickel");
+		GameRegistry.registerItem(pickTopaz, "PickTopaz");
+		GameRegistry.registerItem(pickDiamond, "PickDiamond");
+		GameRegistry.registerItem(pickWSteel, "PickWSteel");
+		GameRegistry.registerItem(pickTitanium, "PickTitanium");
 		
-		GameRegistry.registerItem(spadeFlint, "industrialflowSpadeFlint");
-		GameRegistry.registerItem(spadeCopper, "industrialflowSpadeCopper");
-		GameRegistry.registerItem(spadeBronze, "industrialflowSpadeBronze");
-		GameRegistry.registerItem(spadeIron, "industrialflowSpadeIron");
-		GameRegistry.registerItem(spadeCobalt, "industrialflowSpadeCobalt");
-		GameRegistry.registerItem(spadeNickel, "industrialflowSpadeNickel");
-		GameRegistry.registerItem(spadeTopaz, "industrialflowSpadeTopaz");
-		GameRegistry.registerItem(spadeDiamond, "industrialflowSpadeDiamond");
-		GameRegistry.registerItem(spadeWSteel, "industrialflowSpadeWSteel");
-		GameRegistry.registerItem(spadeTitanium, "industrialflowSpadeTitanium");
+		GameRegistry.registerItem(broadswordFlint, "BroadswordFlint");
+		GameRegistry.registerItem(broadswordCopper, "BroadswordCopper");
+		GameRegistry.registerItem(broadswordBronze, "BroadswordBronze");
+		GameRegistry.registerItem(broadswordIron, "BroadswordIron");
+		GameRegistry.registerItem(broadswordCobalt, "BroadswordCobalt");
+		GameRegistry.registerItem(broadswordNickel, "BroadswordNickel");
+		GameRegistry.registerItem(broadswordTopaz, "BroadswordTopaz");
+		GameRegistry.registerItem(broadswordDiamond, "BroadswordDiamond");
+		GameRegistry.registerItem(broadswordWSteel, "BroadswordWSteel");
+		GameRegistry.registerItem(broadswordTitanium, "BroadswordTitanium");
 		
-		GameRegistry.registerItem(hoeFlint, "industrialflowHoeFlint");
-		GameRegistry.registerItem(hoeCopper, "industrialflowHoeCopper");
-		GameRegistry.registerItem(hoeBronze, "industrialflowHoeBronze");
-		GameRegistry.registerItem(hoeIron, "industrialflowHoeIron");
-		GameRegistry.registerItem(hoeCobalt, "industrialflowHoeCobalt");
-		GameRegistry.registerItem(hoeNickel, "industrialflowHoeNickel");
-		GameRegistry.registerItem(hoeTopaz, "industrialflowHoeTopaz");
-		GameRegistry.registerItem(hoeDiamond, "industrialflowHoeDiamond");
-		GameRegistry.registerItem(hoeWSteel, "industrialflowHoeWSteel");
-		GameRegistry.registerItem(hoeTitanium, "industrialflowHoeTitanium");
+		GameRegistry.registerItem(spadeFlint, "SpadeFlint");
+		GameRegistry.registerItem(spadeCopper, "SpadeCopper");
+		GameRegistry.registerItem(spadeBronze, "SpadeBronze");
+		GameRegistry.registerItem(spadeIron, "SpadeIron");
+		GameRegistry.registerItem(spadeCobalt, "SpadeCobalt");
+		GameRegistry.registerItem(spadeNickel, "SpadeNickel");
+		GameRegistry.registerItem(spadeTopaz, "SpadeTopaz");
+		GameRegistry.registerItem(spadeDiamond, "SpadeDiamond");
+		GameRegistry.registerItem(spadeWSteel, "SpadeWSteel");
+		GameRegistry.registerItem(spadeTitanium, "SpadeTitanium");
 		
-		GameRegistry.registerItem(axeUltimate, "industrialFlowAxeUltimate");
-		GameRegistry.registerItem(pickUltimate, "industrialFlowPickUltimate");
-		GameRegistry.registerItem(broadswordUltimate, "industrialFlowBroadswordUltimate");
-		GameRegistry.registerItem(spadeUltimate, "industrialFlowSpadeUltimate");
-		GameRegistry.registerItem(hoeUltimate, "industrialFlowHoeUltimate");
+		GameRegistry.registerItem(hoeFlint, "HoeFlint");
+		GameRegistry.registerItem(hoeCopper, "HoeCopper");
+		GameRegistry.registerItem(hoeBronze, "HoeBronze");
+		GameRegistry.registerItem(hoeIron, "HoeIron");
+		GameRegistry.registerItem(hoeCobalt, "HoeCobalt");
+		GameRegistry.registerItem(hoeNickel, "HoeNickel");
+		GameRegistry.registerItem(hoeTopaz, "HoeTopaz");
+		GameRegistry.registerItem(hoeDiamond, "HoeDiamond");
+		GameRegistry.registerItem(hoeWSteel, "HoeWSteel");
+		GameRegistry.registerItem(hoeTitanium, "HoeTitanium");
 		
+		GameRegistry.registerItem(axeUltimate, "AxeUltimate");
+		GameRegistry.registerItem(battleaxeUltimate, "BattleaxeUltimate");
+		GameRegistry.registerItem(pickUltimate, "PickUltimate");
+		GameRegistry.registerItem(broadswordUltimate, "BroadswordUltimate");
+		GameRegistry.registerItem(spadeUltimate, "SpadeUltimate");
+		GameRegistry.registerItem(hoeUltimate, "HoeUltimate");
+
+		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","MR"," R",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(axeCopper, 1), new Object[]{"MM","MR"," R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeBronze, 1), new Object[]{"MM","MR"," R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeIron, 1), new Object[]{"MM","MR"," R",('M'), ingotIron, ('R'), rodWooden});
@@ -334,7 +363,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(axeDiamond, 1), new Object[]{"MM","MR"," R",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeWSteel, 1), new Object[]{"MM","MR"," R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeTitanium, 1), new Object[]{"MM","MR"," R",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","RM","R ",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(axeCopper, 1), new Object[]{"MM","RM","R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeBronze, 1), new Object[]{"MM","RM","R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeIron, 1), new Object[]{"MM","RM","R ",('M'), ingotIron, ('R'), rodWooden});
@@ -344,7 +374,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(axeDiamond, 1), new Object[]{"MM","RM","R ",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeWSteel, 1), new Object[]{"MM","RM","R ",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(axeTitanium, 1), new Object[]{"MM","RM","R ",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(pickFlint, 1), new Object[]{"MMM"," R "," R ",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(pickCopper, 1), new Object[]{"MMM"," R "," R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickBronze, 1), new Object[]{"MMM"," R "," R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickIron, 1), new Object[]{"MMM"," R "," R ",('M'), ingotIron, ('R'), rodWooden});
@@ -354,7 +385,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(pickDiamond, 1), new Object[]{"MMM"," R "," R ",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickWSteel, 1), new Object[]{"MMM"," R "," R ",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(pickTitanium, 1), new Object[]{"MMM"," R "," R ",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(broadswordFlint, 1), new Object[]{"M","M","R",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(broadswordCopper, 1), new Object[]{"M","M","R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordBronze, 1), new Object[]{"M","M","R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordIron, 1), new Object[]{"M","M","R",('M'), ingotIron, ('R'), rodWooden});
@@ -364,7 +396,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(broadswordDiamond, 1), new Object[]{"M","M","R",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordWSteel, 1), new Object[]{"M","M","R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(broadswordTitanium, 1), new Object[]{"M","M","R",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(spadeFlint, 1), new Object[]{"M","R","R",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(spadeCopper, 1), new Object[]{"M","R","R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeBronze, 1), new Object[]{"M","R","R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeIron, 1), new Object[]{"M","R","R",('M'), ingotIron, ('R'), rodWooden});
@@ -374,7 +407,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(spadeDiamond, 1), new Object[]{"M","R","R",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeWSteel, 1), new Object[]{"M","R","R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(spadeTitanium, 1), new Object[]{"M","R","R",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM"," R"," R",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(hoeCopper, 1), new Object[]{"MM"," R"," R",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeBronze, 1), new Object[]{"MM"," R"," R",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeIron, 1), new Object[]{"MM"," R"," R",('M'), ingotIron, ('R'), rodWooden});
@@ -384,7 +418,8 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(hoeDiamond, 1), new Object[]{"MM"," R"," R",('M'), gemDiamond, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeWSteel, 1), new Object[]{"MM"," R"," R",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeTitanium, 1), new Object[]{"MM"," R"," R",('M'), ingotTitanium, ('R'), rodWooden});
-		
+
+		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM","R ","R ",('M'), Items.flint, ('R'), rodFlint});
 		GameRegistry.addRecipe(new ItemStack(hoeCopper, 1), new Object[]{"MM","R ","R ",('M'), ingotCopper, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeBronze, 1), new Object[]{"MM","R ","R ",('M'), ingotBronze, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeIron, 1), new Object[]{"MM","R ","R ",('M'), ingotIron, ('R'), rodWooden});
@@ -395,32 +430,32 @@ public class IF_Base {
 		GameRegistry.addRecipe(new ItemStack(hoeWSteel, 1), new Object[]{"MM","R ","R ",('M'), ingotWSteel, ('R'), rodWooden});
 		GameRegistry.addRecipe(new ItemStack(hoeTitanium, 1), new Object[]{"MM","R ","R ",('M'), ingotTitanium, ('R'), rodWooden});
 		
+		GameRegistry.addRecipe(new ItemStack(battleaxeCopper, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotCopper, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeFlint, 1), new Object[]{"MMM","MRM"," R ",('M'), Items.flint, ('R'), rodFlint});
+		GameRegistry.addRecipe(new ItemStack(battleaxeBronze, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotBronze, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeIron, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotIron, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeCobalt, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotCobalt, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeNickel, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotNickel, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeTopaz, 1), new Object[]{"MMM","MRM"," R ",('M'), gemTopaz, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeDiamond, 1), new Object[]{"MMM","MRM"," R ",('M'), gemDiamond, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeWSteel, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotWSteel, ('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(battleaxeTitanium, 1), new Object[]{"MMM","MRM"," R ",('M'), ingotTitanium, ('R'), rodWooden});
+		
 		GameRegistry.addRecipe(new ItemStack(pickUltimate, 1), new Object[]{"PRP"," R "," C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"RP","RP"," C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"PR","PR","C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(broadswordUltimate, 1), new Object[]{" P"," R", "TC",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium,('T'),plateTungsten});
+		GameRegistry.addRecipe(new ItemStack(battleaxeUltimate, 1), new Object[]{"RTP","RCP"," C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium,('T'),plateTungsten});
+		GameRegistry.addRecipe(new ItemStack(battleaxeUltimate, 1), new Object[]{"PTR","PCR"," C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium,('T'),plateTungsten});
 		GameRegistry.addRecipe(new ItemStack(spadeUltimate, 1), new Object[]{"R","P","C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"PR","C ","C ",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"PR"," C"," C",('P'), ingotPalladium,('R'), ingotRuthenium,('C'),rodCadmium});
-		GameRegistry.addRecipe(new ItemStack(ingotPalladium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetPalladium});
-		GameRegistry.addRecipe(new ItemStack(ingotRuthenium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetRuthenium});
-		GameRegistry.addRecipe(new ItemStack(forgeHammer, 64), new Object[]{"MM ","MRR","MM ",('M'), ingotTin,('R'), rodWooden});
-		GameRegistry.addRecipe(new ItemStack(rodCadmium, 8), new Object[]{"P","P",('P'), plateCadmium});
-		GameRegistry.addRecipe(new ItemStack(Blocks.torch, 3), new Object[]{"F","R",('F'), Items.flint,('R'),rodWooden});
 		
 		GameRegistry.addRecipe(new ItemStack(pickUltimate, 1), new Object[]{"P",('P'),pickUltimate});
 		GameRegistry.addRecipe(new ItemStack(broadswordUltimate, 1), new Object[]{"P",('P'),broadswordUltimate});
 		GameRegistry.addRecipe(new ItemStack(hoeUltimate, 1), new Object[]{"P",('P'),hoeUltimate});
 		GameRegistry.addRecipe(new ItemStack(axeUltimate, 1), new Object[]{"P",('P'),axeUltimate});
 		GameRegistry.addRecipe(new ItemStack(spadeUltimate, 1), new Object[]{"P",('P'),spadeUltimate});
-		
-		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","MR"," R",('M'), Items.flint, ('R'), rodFlint});
-		GameRegistry.addRecipe(new ItemStack(axeFlint, 1), new Object[]{"MM","RM","R ",('M'), Items.flint, ('R'), rodFlint});		
-		GameRegistry.addRecipe(new ItemStack(pickFlint, 1), new Object[]{"MMM"," R "," R ",('M'), Items.flint, ('R'), rodFlint});
-		GameRegistry.addRecipe(new ItemStack(broadswordFlint, 1), new Object[]{"M","M","R",('M'), Items.flint, ('R'), rodFlint});
-		GameRegistry.addRecipe(new ItemStack(spadeFlint, 1), new Object[]{"M","R","R",('M'), Items.flint, ('R'), rodFlint});
-		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM"," R"," R",('M'), Items.flint, ('R'), rodFlint});
-		GameRegistry.addRecipe(new ItemStack(hoeFlint, 1), new Object[]{"MM","R ","R ",('M'), Items.flint, ('R'), rodFlint});
 		
 		GameRegistry.addSmelting(oreZinc, new ItemStack(ingotZinc), 0.15F);
 		GameRegistry.addSmelting(oreCopper, new ItemStack(ingotCopper), 0.3F);
@@ -441,11 +476,15 @@ public class IF_Base {
 		GameRegistry.addSmelting(oreRuthenium, new ItemStack(nuggetRuthenium), 1.45F);
 		GameRegistry.addSmelting(oreRadium, new ItemStack(ingotRadium), 1.6F);
 		GameRegistry.addSmelting(oreThorium, new ItemStack(ingotThorium), 1.8F);
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(rodWooden, 12), new Object[] {Blocks.planks});
-		GameRegistry.addShapelessRecipe(new ItemStack(rodWooden, 6), new Object[] {Items.stick});
-		GameRegistry.addShapelessRecipe(new ItemStack(rodFire, 6), new Object[] {Items.stick, Items.stick, Items.stick, Items.blaze_powder});
-		GameRegistry.addShapelessRecipe(new ItemStack(rodFlint, 12), new Object[] {Blocks.planks, Items.flint});
+
+		GameRegistry.addRecipe(new ItemStack(ingotPalladium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetPalladium});
+		GameRegistry.addRecipe(new ItemStack(ingotRuthenium, 1), new Object[]{"MMM","MMM","MMM",('M'), nuggetRuthenium});
+		GameRegistry.addRecipe(new ItemStack(forgeHammer, 64), new Object[]{"MM ","MRR","MM ",('M'), ingotTin,('R'), rodWooden});
+		GameRegistry.addRecipe(new ItemStack(rodCadmium, 8), new Object[]{"P","P",('P'), plateCadmium});
+		GameRegistry.addRecipe(new ItemStack(Blocks.torch, 3), new Object[]{"F","R",('F'), Items.flint,('R'),rodWooden});
+		GameRegistry.addShapelessRecipe(new ItemStack(rodWooden, 3), new Object[] {Items.stick});
+		GameRegistry.addShapelessRecipe(new ItemStack(rodFire, 9), new Object[] {Items.stick, Items.stick, Items.stick, Items.blaze_powder});
+		GameRegistry.addShapelessRecipe(new ItemStack(rodFlint, 3), new Object[] {Blocks.planks, Items.flint});
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetPalladium, 9), new Object[] {ingotPalladium});
 		GameRegistry.addShapelessRecipe(new ItemStack(nuggetRuthenium, 9), new Object[] {ingotRuthenium});
 		GameRegistry.addShapelessRecipe(new ItemStack(plateCadmium, 1), new Object[] {forgeHammer, ingotCadmium});

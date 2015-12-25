@@ -95,6 +95,17 @@ item.industrialflow:spadeWSteel.name=Tungstate spade
 item.industrialflow:spadeDiamond.name=Diamond spade
 item.industrialflow:spadeTopaz.name=Topaz spade
 
+item.industrialflow:battleaxeFlint.name=Flint battleaxe
+item.industrialflow:battleaxeCopper.name=Copper battleaxe
+item.industrialflow:battleaxeCobalt.name=Cobalt battleaxe
+item.industrialflow:battleaxeBronze.name=Bronze battleaxe
+item.industrialflow:battleaxeIron.name=Iron battleaxe
+item.industrialflow:battleaxeNickel.name=Nickel battleaxe
+item.industrialflow:battleaxeTitanium.name=Titanium battleaxe
+item.industrialflow:battleaxeWSteel.name=Tungstate battleaxe
+item.industrialflow:battleaxeDiamond.name=Diamond battleaxe
+item.industrialflow:battleaxeTopaz.name=Topaz battleaxe
+
 item.industrialflow:forgeHammer.name=Forge Hammer
 item.industrialflow:plateCadmium.name=Cadmium Plate
 item.industrialflow:plateTungsten.name=Tungsten Plate
@@ -104,6 +115,7 @@ item.industrialflow:axeUltimate.name=Ultimate axe
 item.industrialflow:spadeUltimate.name=Ultimate spade
 item.industrialflow:broadswordUltimate.name=Ultimate broadsword
 item.industrialflow:hoeUltimate.name=Ultimate hoe
+item.industrialflow:battleaxeUltimate.name=Ultimate battleaxe
 
 item.industrialflow:ingotZinc.name=Zinc Ingot
 item.industrialflow:ingotCopper.name=Copper Ingot
@@ -126,3 +138,7 @@ item.industrialflow:ingotRenium.name=Renium Ingot
 item.industrialflow:ingotRuthenium.name=Ruthenium Ingot
 item.industrialflow:ingotRadium.name=Radium Ingot
 item.industrialflow:ingotThorium.name=Thorium Ingot
+
+attribute.name.industrialflow:knockback=Knockback
+attribute.name.industrialflow:attackSpeed=Attack Speed
+attribute.name.industrialflow:reach=Reach

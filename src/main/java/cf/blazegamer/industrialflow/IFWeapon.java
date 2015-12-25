@@ -1,5 +1,7 @@
 package cf.blazegamer.industrialflow;
 
+import java.util.Set;
+
 import com.google.common.collect.Multimap;
 
 import cpw.mods.fml.relauncher.Side;
@@ -12,22 +14,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
 
 public abstract class IFWeapon {
 	public Item item;
 	IItemWeapon weapon;
-	public IFWeapon() {
-		item = null;
-		weapon = null;
-	}
-	
 	final void setItem(IItemWeapon itemw) {
 		item = (Item)itemw;
 		weapon = itemw;
 		onSetItem();
 	}
-	
+	public IFWeapon() {
+		item = null;
+		weapon = null;
+	}
 	protected abstract void onSetItem();
 	public abstract void setProperties();
 	public abstract float getEntityDamageMaterialPart();
