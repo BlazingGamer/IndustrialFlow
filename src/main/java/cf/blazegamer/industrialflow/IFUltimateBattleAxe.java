@@ -13,6 +13,7 @@ public class IFUltimateBattleAxe extends ItemMelee {
 
 	@Override
 	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		super.onCreated(par1ItemStack, par2World, par3EntityPlayer);
 		par1ItemStack.addEnchantment(Enchantment.unbreaking, 3);
 		par1ItemStack.addEnchantment(Enchantment.sharpness, 4);
 		par1ItemStack.addEnchantment(Enchantment.smite, 3);

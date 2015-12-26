@@ -11,6 +11,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class IFGenerator implements IWorldGenerator {
 	public Block block;
+	public Block genInside;
 	public boolean nether;
 	public boolean end;
 	public boolean overworld;
@@ -53,12 +54,34 @@ public class IFGenerator implements IWorldGenerator {
 		this.veinsPerChunk = VeinsPerChunk;
 	}
 	
+	/**
+	 * @param block - ÃÅÍÅĞÈĞÓŞÙÈÉÑß ÁËÎÊ
+	 * @param inNether - ÍÀËÈ×ÈÅ ÃÅÍÅĞÀÖÈÈ Â ÀÄÓ
+	 * @param inWorld - ÍÀËÈ×ÈÅ ÃÅÍÅĞÀÖÈÈ Â ÂÅĞÕÍÅÌ ÌÈĞÅ
+	 * @param inEnd - ÍÀËÈ×ÈÅ ÃÅÍÅĞÀÖÈÈ Â ÊĞÀŞ
+	 * @param heightMin - ÌÈÍÈÌÀËÜÍÀß ÂÛÑÎÒÀ
+	 * @param heightMax - ÌÀÊÑÈÌÀËÜÍÀß ÂÛÑÎÒÀ
+	 * @param BlocksPerVein - ÊÎË-ÂÎ ÁËÎÊÎÂ Â ÆÈËÅ
+	 * @param VeinsPerChunk - ÊÎË-ÂÎ ÆÈË Â ×ÀÍÊÅ
+	 */
+	public IFGenerator(Block block, boolean inNether, boolean inWorld, boolean inEnd, int heightMin, int heightMax, int BlocksPerVein, int VeinsPerChunk, Block genInside) {
+		this.block = block;
+		this.nether = inNether;
+		this.end = inEnd;
+		this.overworld = inWorld;
+		this.minY = heightMin;
+		this.maxY = heightMax;
+		this.blocksPerVein = BlocksPerVein;
+		this.veinsPerChunk = VeinsPerChunk;
+		this.genInside = genInside;
+	}
+	
 	private void generateEnd(World world, Random random, int x, int z) {
 		for (int i = 0; i < this.veinsPerChunk; i++) {
 			int X = x + random.nextInt(16);
 			int Y = this.minY + random.nextInt(this.maxY - this.minY);
 			int Z = z + random.nextInt(16);
-			(new WorldGenMinable(this.block, 1, this.blocksPerVein, Blocks.end_stone)).generate(world, random, X, Y, Z);
+			(new WorldGenMinable(this.block, 1, this.blocksPerVein, (this.genInside == null ? Blocks.end_stone : this.genInside))).generate(world, random, X, Y, Z);
 		}
 	}
 	
@@ -67,7 +90,7 @@ public class IFGenerator implements IWorldGenerator {
 			int X = x + random.nextInt(16);
 			int Y = this.minY + random.nextInt(this.maxY - this.minY);
 			int Z = z + random.nextInt(16);
-			(new WorldGenMinable(this.block, 1, this.blocksPerVein, Blocks.netherrack)).generate(world, random, X, Y, Z);
+			(new WorldGenMinable(this.block, 1, this.blocksPerVein, (this.genInside == null ? Blocks.netherrack : this.genInside))).generate(world, random, X, Y, Z);
 		}
 	}
 	
@@ -79,7 +102,7 @@ public class IFGenerator implements IWorldGenerator {
         	int x = X + random.nextInt(16);
 			int y = this.minY + random.nextInt(this.maxY - this.minY);
         	int z = Z + random.nextInt(16);
-			(new WorldGenMinable(this.block, this.blocksPerVein, Blocks.stone)).generate(world, random, x, y, z);
+			(new WorldGenMinable(this.block, this.blocksPerVein, (this.genInside == null ? Blocks.stone : this.genInside))).generate(world, random, x, y, z);
         }
 	}
 }

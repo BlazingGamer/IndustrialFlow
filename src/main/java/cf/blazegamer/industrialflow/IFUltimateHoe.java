@@ -14,6 +14,7 @@ public class IFUltimateHoe extends IFHoe {
 	
 	@Override
 	public void onCreated(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		super.onCreated(par1ItemStack, par2World, par3EntityPlayer);
 		par1ItemStack.addEnchantment(Enchantment.efficiency, 2);
 		par1ItemStack.addEnchantment(Enchantment.unbreaking, 25);
     }
