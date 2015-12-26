@@ -546,6 +546,8 @@ public class IF_Base {
 		GameRegistry.addShapelessRecipe(new ItemStack(platePalladium, 1), new Object[] {forgeHammer, ingotPalladium});
 		GameRegistry.addShapelessRecipe(new ItemStack(plateRuthenium, 1), new Object[] {forgeHammer, ingotRuthenium});
 		GameRegistry.addShapelessRecipe(new ItemStack(plateVanadium, 1), new Object[] {forgeHammer, ingotVanadium, ingotTitanium});
+		GameRegistry.addShapelessRecipe(new ItemStack(ingotWSteel, 3), new Object[] {ingotTungsten, ingotTungsten, Items.iron_ingot});
+		GameRegistry.addShapelessRecipe(new ItemStack(ingotBronze, 4), new Object[] {ingotCopper, ingotCopper, ingotCopper, ingotTin});
 		
 		cadmiumGen = new IFGenerator(oreCadmium, true, false, false, 1, 64, 6, 6);
 		reniumGen = new IFGenerator(oreRenium, true, false, false, 1, 48, 4, 3);
